@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Busy Hands - About Us</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base Settings */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    .headings {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    /* Gradient Brand Text */
+    .brand-text {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #1f2937, #4b5563);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: lowercase;
+    }
+
+    /* Header Styling */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    header.shrink {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Logo */
+    .logo-img {
+      height: 3rem;
+      width: auto;
+    }
+    
+    @media (max-width: 640px) {
+      .logo-img { height: 2.25rem; }
+    }
+
+    /* Navigation */
+    .nav-link {
+      color: #4b5563;
+      font-weight: 700; /* Bold as per other pages */
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #000;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      transition: max-height 0.4s ease-in-out, opacity 0.4s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    .mobile-menu.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    /* Modern Card Styling */
+    .modern-card {
+      background: white;
+      border-radius: 0; /* Sharp corners for classy look */
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+      border-left: 4px solid #1f2937;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Image Hover Effects */
+    .img-hover-container {
+      overflow: hidden;
+      border-radius: 0.5rem;
+    }
+    .img-hover-container img {
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .img-hover-container:hover img {
+      transform: scale(1.05);
+    }
+
+    /* CSR Section */
+    .csr-overlay {
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.6) 100%);
+    }
+
+    /* Button */
+    .btn-classy {
+      background-color: #1f2937;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+    .btn-classy:hover {
+      background-color: #374151;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+  <header id="main-header" class="py-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6">
+      
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <img src="BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="logo-img">
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold brand-text headings">busy hands</h1>
+      </a>
+
+      <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 text-black hover:text-gray-600 focus:outline-none">
+        <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+        </svg>
+      </button>
+
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link text-black border-b-2 border-black pb-1">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-white w-full border-t border-gray-100 mt-2">
+      <div class="flex flex-col space-y-2 py-4 px-2 font-bold">
+        <a href="index.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Home</a>
+        <a href="about.html" class="block p-2 rounded bg-gray-50 text-black">About</a>
+        <a href="services.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Services</a>
+        <a href="projects.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Projects</a>
+        <a href="contact.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <section class="max-w-7xl mx-auto pt-16 pb-10 px-4 text-center" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 headings text-gray-900">About Us</h2>
+      <div class="w-16 h-1 bg-gray-800 mx-auto mb-6"></div>
+      <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+        Building the future through precision, innovation, and unwavering commitment.
+      </p>
+    </section>
+
+    <section class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
+      <div class="flex flex-col lg:flex-row gap-12 items-stretch" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="w-full lg:w-1/2 img-hover-container shadow-xl">
+          <img src="HOMEPAGE.jpg" alt="Our Team" class="w-full h-full object-cover min-h-[400px]">
+        </div>
+
+        <div class="w-full lg:w-1/2">
+          <div class="modern-card">
+            <h3 class="text-3xl font-bold mb-6 headings text-gray-900">Our Mission</h3>
+            <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+              At Busy Hands, our mission is to seamlessly integrate modern technology with traditional craftsmanship.
+              We deliver cutting-edge construction solutions that redefine industry standards and shape a smarter future.
+            </p>
+
+            <h3 class="text-2xl font-bold mb-4 headings text-gray-900">Core Values</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="mr-3 text-xl">▪</span>
+                <span class="text-gray-700 font-medium">Precision-driven innovation</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-xl">▪</span>
+                <span class="text-gray-700 font-medium">Sustainable and safe practices</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-3 text-xl">▪</span>
+                <span class="text-gray-700 font-medium">Client-focused excellence</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-16 md:py-24 border-y border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row-reverse gap-12 items-center" data-aos="fade-up" data-aos-delay="200">
+          
+          <div class="w-full lg:w-1/2 img-hover-container shadow-xl">
+            <img src="ABOUT1.jpg" alt="Technology at Busy Hands" class="w-full h-full object-cover min-h-[350px]">
+          </div>
+
+          <div class="w-full lg:w-1/2">
+            <h3 class="text-3xl font-bold mb-6 headings text-gray-900">Who We Are</h3>
+            <div class="w-12 h-1 bg-gray-300 mb-6"></div>
+            <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+              Founded in 2013, Busy Hands has rapidly grown to become a trusted leader in innovative construction services,
+              with over a decade of experience. Our team is composed of skilled professionals who bring passion and expertise
+              to every project.
+            </p>
+            <p class="text-gray-600 leading-relaxed text-lg">
+              From directional drilling to smart metering, we've built a reputation for exceeding client expectations and
+              embracing technological advancement in every detail.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto py-16 md:py-24 px-4 sm:px-6">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 headings text-gray-900">Social Responsibility</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+          We believe in empowering our community. Busy Hands is proud to support local talent by sponsoring kits for these football clubs.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="relative group cursor-pointer overflow-hidden shadow-lg">
+          <div class="aspect-w-16 aspect-h-9 h-64 md:h-80 w-full relative">
+            <img src="GOOTAUEAGLEFIGHTERS.jpg" alt="Football Club Sponsored by Busy Hands" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 csr-overlay flex items-end p-6">
+              <div>
+                <span class="bg-white text-black text-xs font-bold px-2 py-1 uppercase tracking-widest mb-2 inline-block">Proud Sponsor</span>
+                <h3 class="text-white text-xl font-bold headings">Goo Tau Eagle Fighters Football Club</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative group cursor-pointer overflow-hidden shadow-lg">
+          <div class="aspect-w-16 aspect-h-9 h-64 md:h-80 w-full relative">
+            <img src="DESPORTOS.jpg" alt="Football Club Sponsored by Busy Hands" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 csr-overlay flex items-end p-6">
+              <div>
+                <span class="bg-white text-black text-xs font-bold px-2 py-1 uppercase tracking-widest mb-2 inline-block">Proud Sponsor</span>
+                <h3 class="text-white text-xl font-bold headings">Desportos Football Club Ladies Team</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="bg-gray-50 py-16 text-center border-t border-gray-100" data-aos="zoom-in">
+      <div class="max-w-3xl mx-auto px-4">
+        <h3 class="text-2xl font-bold mb-4 headings text-gray-900">Join Us on Our Journey</h3>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          At Busy Hands, we're not just builders — we're visionaries. Join us as we shape a smarter, more sustainable future.
+          Let's build the extraordinary together.
+        </p>
+        <a href="contact.html" class="btn-classy">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-100 text-gray-400 py-8 text-center border-t border-gray-200 text-xs sm:text-sm uppercase tracking-widest">
+    &copy; 2025 Busy Hands. All rights reserved.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    const header = document.getElementById('main-header');
+    const toggleButton = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Mobile Menu Toggle
+    toggleButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Smooth Sticky Shrink
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Busy Hands - Our Projects</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* Base Settings */
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb; /* Light gray background for depth */
+    color: #1f2937;
+    overflow-x: hidden;
+  }
+  
+  .headings {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* Force Inter on all text elements */
+  nav, a, p, span, li, button, input {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(to right, #1f2937, #4b5563);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: lowercase;
+  }
+
+  /* Header Transitions */
+  header {
+    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+  }
+  header.shrink {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Logo styling */
+  .logo-img {
+    height: 3rem;
+    width: auto;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  @media (max-width: 640px) {
+    .logo-img {
+      height: 2.25rem;
+    }
+  }
+
+  /* Mobile menu animation */
+  .mobile-menu {
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  .mobile-menu.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  /* Project Card Styling */
+  .project-card {
+    background: white;
+    border-radius: 0; /* Sharper corners for modern look, or slight radius */
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border-bottom: 4px solid transparent;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+    border-bottom: 4px solid #1f2937;
+  }
+
+  /* Image Zoom Effect */
+  .img-container {
+    overflow: hidden;
+  }
+  .project-image {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .project-card:hover .project-image {
+    transform: scale(1.1);
+  }
+
+  /* Stats Section */
+  .stat-number {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+</style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+  <header id="main-header" class="sticky top-0 z-50 py-4 border-b border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <img src="BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="logo-img" />
+          <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold gradient-text headings">busy hands</h1>
+        </a>
+
+        <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 text-black hover:text-gray-600 focus:outline-none">
+          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+
+        <nav class="hidden md:block">
+          <ul class="flex space-x-8 font-bold text-sm lg:text-base text-gray-600">
+            <li><a href="index.html" class="hover:text-black transition duration-300">Home</a></li>
+            <li><a href="about.html" class="hover:text-black transition duration-300">About</a></li>
+            <li><a href="services.html" class="hover:text-black transition duration-300">Services</a></li>
+            <li><a href="projects.html" class="text-black border-b-2 border-black pb-1">Projects</a></li>
+            <li><a href="contact.html" class="hover:text-black transition duration-300">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div id="mobile-menu" class="mobile-menu md:hidden bg-white mt-2 border-t border-gray-100">
+        <div class="flex flex-col space-y-2 py-4 px-2 font-bold">
+          <a href="index.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Home</a>
+          <a href="about.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">About</a>
+          <a href="services.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Services</a>
+          <a href="projects.html" class="block p-2 rounded bg-gray-50 text-black">Projects</a>
+          <a href="contact.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <section class="container mx-auto px-4 sm:px-6 pt-12 pb-8 sm:pt-16 sm:pb-12 text-center">
+      <div data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 headings tracking-wide">Featured Projects</h2>
+        <div class="w-16 h-1 bg-gray-800 mx-auto mb-6"></div>
+        <p class="max-w-2xl mx-auto text-gray-500 text-base sm:text-lg leading-relaxed">
+          Delivering excellence in infrastructure and smart utilities. We take pride in our precision, safety, and innovation.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white border-y border-gray-100 py-10 mb-12" data-aos="fade-up" data-aos-delay="100">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
+          
+          <div class="p-4">
+            <div class="text-4xl sm:text-5xl font-bold mb-2 stat-number">50+</div>
+            <div class="text-xs uppercase tracking-widest font-bold text-gray-400">Happy Clients</div>
+          </div>
+          
+          <div class="p-4 pt-8 sm:pt-4">
+            <div class="text-4xl sm:text-5xl font-bold mb-2 stat-number">95%</div>
+            <div class="text-xs uppercase tracking-widest font-bold text-gray-400">Success Rate</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 sm:px-6 pb-20">
+      <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="200">
+        
+        <div class="project-card shadow-lg group">
+          <div class="img-container h-56 sm:h-64 relative">
+            <img src="URBANPIPELINE.jpg" alt="Urban Pipeline Installation" class="project-image" />
+            <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition duration-500"></div>
+          </div>
+          <div class="p-8">
+            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Infrastructure</div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 headings group-hover:text-gray-600 transition">Urban Pipeline Installation</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Efficient underground pipeline systems designed for sustainable water distribution in complex urban environments.</p>
+          </div>
+        </div>
+        
+        <div class="project-card shadow-lg group" data-aos="fade-up" data-aos-delay="300">
+          <div class="img-container h-56 sm:h-64 relative">
+            <img src="SMARTMETER.jpg" alt="Smart Meter Upgrade" class="project-image" />
+             <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition duration-500"></div>
+          </div>
+          <div class="p-8">
+             <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Technology</div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 headings group-hover:text-gray-600 transition">Smart Meter Upgrade</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Implementation of advanced smart metering infrastructure 
+
+[Image of smart electricity meter]
+ to enable real-time energy management and analytics.</p>
+          </div>
+        </div>
+        
+        <div class="project-card shadow-lg group" data-aos="fade-up" data-aos-delay="400">
+          <div class="img-container h-56 sm:h-64 relative">
+            <img src="DIRECTIONALDRILLING.jpg" alt="Directional Drilling for Data Lines" class="project-image" />
+             <div class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 transition duration-500"></div>
+          </div>
+          <div class="p-8">
+             <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Excavation</div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 headings group-hover:text-gray-600 transition">Directional Drilling</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Non-invasive horizontal directional drilling  techniques to install telecom cables in busy city centers.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-100 border-t border-gray-200 text-gray-500 py-8 text-center text-xs sm:text-sm">
+    <div class="container mx-auto px-4">
+      <p class="mb-4">&copy; 2025 Busy Hands. All rights reserved.</p>
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="hover:text-gray-800 transition">Privacy Policy</a>
+        <a href="#" class="hover:text-gray-800 transition">Terms & Conditions</a>
+        <a href="#" class="hover:text-gray-800 transition">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50
+    });
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+    // Smooth sticky shrink effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 40) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+  </script>
+
+</body>
+</html>

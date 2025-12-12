@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Busy Hands - Contact Us</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* Base Settings */
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+    color: #1f2937;
+    overflow-x: hidden;
+  }
+  
+  .headings {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* Force Inter on all text elements */
+  nav, a, p, span, li, button, input {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(to right, #1f2937, #4b5563);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: lowercase;
+  }
+
+  /* Header Transitions */
+  header {
+    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+  }
+  header.shrink {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Logo styling - Borderless */
+  .logo-img {
+    height: 3rem;
+    width: auto;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  @media (max-width: 640px) {
+    .logo-img {
+      height: 2.25rem;
+    }
+  }
+
+  /* Mobile menu animation */
+  .mobile-menu {
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  .mobile-menu.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  /* Info Card Styling */
+  .info-card {
+    background: white;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #1f2937;
+    height: 100%;
+  }
+
+  /* Map Container */
+  .map-container {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 0.5rem;
+    height: 100%;
+    min-height: 450px;
+    width: 100%;
+  }
+
+  /* Map visuals */
+  iframe {
+    filter: grayscale(100%) contrast(1.1);
+    transition: filter 0.3s ease;
+  }
+  iframe:hover {
+    filter: grayscale(0%);
+  }
+
+  @media (max-width: 1024px) {
+    .map-container {
+      min-height: 350px;
+    }
+  }
+</style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+  <header id="main-header" class="sticky top-0 z-50 py-4 border-b border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <img src="BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="logo-img" />
+          <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold gradient-text headings">busy hands</h1>
+        </a>
+
+        <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 text-black hover:text-gray-600 focus:outline-none">
+          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+
+        <nav class="hidden md:block">
+          <ul class="flex space-x-8 font-bold text-sm lg:text-base text-gray-600">
+            <li><a href="index.html" class="hover:text-black transition duration-300">Home</a></li>
+            <li><a href="about.html" class="hover:text-black transition duration-300">About</a></li>
+            <li><a href="services.html" class="hover:text-black transition duration-300">Services</a></li>
+            <li><a href="projects.html" class="hover:text-black transition duration-300">Projects</a></li>
+            <li><a href="contact.html" class="text-black border-b-2 border-black pb-1">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div id="mobile-menu" class="mobile-menu md:hidden bg-white mt-2 border-t border-gray-100">
+        <div class="flex flex-col space-y-2 py-4 px-2 font-bold">
+          <a href="index.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Home</a>
+          <a href="about.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">About</a>
+          <a href="services.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Services</a>
+          <a href="projects.html" class="block p-2 rounded hover:bg-gray-50 text-gray-800">Projects</a>
+          <a href="contact.html" class="block p-2 rounded bg-gray-50 text-black">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 headings">Get in Touch</h2>
+      <p class="max-w-2xl mx-auto text-gray-500 text-sm sm:text-base">
+        We are based in Gaborone and ready to help. Reach out for collaborations or inquiries.
+      </p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+      
+      <div class="w-full lg:w-5/12" data-aos="fade-right" data-aos-delay="100">
+        <div class="info-card p-6 sm:p-10 flex flex-col justify-center rounded-lg">
+          <h3 class="text-2xl font-bold mb-8 text-gray-900 headings border-b pb-4">Contact Info</h3>
+          
+          <div class="space-y-8">
+            <div class="flex items-start group">
+              <div class="flex-shrink-0 mt-1 p-2 bg-gray-100 rounded-full group-hover:bg-gray-200 transition">
+                <svg class="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Our Office</p>
+                <p class="text-lg text-gray-800 font-medium">Gaborone, Botswana</p>
+              </div>
+            </div>
+
+            <div class="flex items-start group">
+              <div class="flex-shrink-0 mt-1 p-2 bg-gray-100 rounded-full group-hover:bg-gray-200 transition">
+                <svg class="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Email</p>
+                <a href="mailto:busyhands12022@gmail.com" class="text-lg text-gray-800 font-medium hover:text-gray-600 transition break-all">busyhands12022@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-start group">
+              <div class="flex-shrink-0 mt-1 p-2 bg-gray-100 rounded-full group-hover:bg-gray-200 transition">
+                <svg class="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Phone</p>
+                <div class="flex flex-col">
+                  <a href="tel:+26771240433" class="text-lg text-gray-800 font-medium hover:text-gray-600 transition">+267 71240433</a>
+                  <a href="tel:+26776409262" class="text-lg text-gray-800 font-medium hover:text-gray-600 transition">+267 76409262</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-7/12" data-aos="fade-left" data-aos-delay="200">
+        <div class="map-container rounded-lg overflow-hidden">
+           <iframe 
+             width="100%" 
+             height="100%" 
+             frameborder="0" 
+             scrolling="no" 
+             marginheight="0" 
+             marginwidth="0" 
+             src="https://maps.google.com/maps?q=Gaborone,%20Botswana&t=&z=13&ie=UTF8&iwloc=&output=embed">
+           </iframe>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-gray-100 border-t border-gray-200 text-gray-500 py-6 text-center text-xs sm:text-sm">
+    <div class="container mx-auto px-4">
+      © 2025 Busy Hands. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 40) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+  </script>
+
+</body>
+</html>

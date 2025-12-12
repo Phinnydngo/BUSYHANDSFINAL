@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Busy Hands - Building the Future</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Orbitron', 'sans-serif'],
+        },
+        colors: {
+          brand: {
+            dark: '#0f172a', /* Deep Slate */
+            gold: '#d97706', /* Amber Gold */
+            light: '#f8fafc',
+            accent: '#f59e0b',
+          }
+        },
+        boxShadow: {
+          'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+          'glow': '0 0 15px rgba(217, 119, 6, 0.3)',
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* === Custom Animations & Utilities === */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Smooth Fade Up Animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUpAnim 1s ease-out forwards;
+  }
+  
+  .delay-100 { animation-delay: 0.2s; }
+  .delay-200 { animation-delay: 0.4s; }
+
+  @keyframes fadeUpAnim {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Glassmorphism Effect */
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.95); /* High opacity for immediate visibility */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Text Gradient for Logo */
+  .brand-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Hero Overlay Gradient */
+  .hero-overlay {
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
+  }
+
+  /* Header Transition */
+  header { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  
+  /* Shrink state (activates on scroll) */
+  header.shrink {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+</style>
+</head>
+
+<body class="bg-brand-light text-slate-800 flex flex-col min-h-screen">
+
+<header id="main-header" class="fixed w-full top-0 left-0 z-50 py-5 transition-all duration-300 glass-nav">
+  <div class="container mx-auto flex justify-between items-center px-6">
+    
+    <a href="#" class="flex items-center gap-3 group">
+      <img src="BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="w-12 h-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-multiply" />
+      <span class="font-display font-black text-2xl tracking-widest brand-gradient uppercase">Busy Hands</span>
+    </a>
+
+    <nav class="hidden md:flex space-x-8 items-center">
+      <a href="index.html" class="text-sm font-semibold uppercase tracking-wide text-slate-700 hover:text-brand-gold transition duration-300">Home</a>
+      <a href="about.html" class="text-sm font-semibold uppercase tracking-wide text-slate-700 hover:text-brand-gold transition duration-300">About</a>
+      <a href="services.html" class="text-sm font-semibold uppercase tracking-wide text-slate-700 hover:text-brand-gold transition duration-300">Services</a>
+      <a href="projects.html" class="text-sm font-semibold uppercase tracking-wide text-slate-700 hover:text-brand-gold transition duration-300">Projects</a>
+      <a href="contact.html" class="text-sm font-semibold uppercase tracking-wide text-slate-700 hover:text-brand-gold transition duration-300">Contact</a>
+    </nav>
+
+    <button id="menu-btn" class="md:hidden flex flex-col space-y-1.5 p-2 focus:outline-none z-50">
+      <span class="block w-6 h-0.5 bg-slate-800 transition-transform duration-300 origin-center"></span>
+      <span class="block w-6 h-0.5 bg-slate-800 transition-opacity duration-300"></span>
+      <span class="block w-6 h-0.5 bg-slate-800 transition-transform duration-300 origin-center"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="absolute top-full left-0 w-full glass-nav transform origin-top scale-y-0 transition-transform duration-300 md:hidden border-t border-gray-100">
+    <div class="flex flex-col py-6 px-6 space-y-4 text-center">
+      <a href="index.html" class="text-slate-800 font-semibold text-lg hover:text-brand-gold">Home</a>
+      <a href="about.html" class="text-slate-800 font-semibold text-lg hover:text-brand-gold">About</a>
+      <a href="services.html" class="text-slate-800 font-semibold text-lg hover:text-brand-gold">Services</a>
+      <a href="projects.html" class="text-slate-800 font-semibold text-lg hover:text-brand-gold">Projects</a>
+      <a href="contact.html" class="text-slate-800 font-semibold text-lg hover:text-brand-gold">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="TEAMBUSY.jpg" alt="Team Busy Hands" class="w-full h-full object-cover object-center transform scale-105" />
+    <div class="absolute inset-0 hero-overlay"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-6 text-center text-white mt-16">
+    <h2 class="font-display font-black text-4xl sm:text-5xl md:text-7xl mb-6 tracking-tight leading-tight fade-up">
+      Precision in <br /><span class="text-brand-accent">Every Layer</span>
+    </h2>
+    
+    <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light fade-up delay-100">
+      From underground infrastructure to smart utility solutions. We deliver engineering excellence that stands the test of time.
+    </p>
+    
+    <div class="fade-up delay-200">
+      <a href="contact.html" class="inline-block bg-brand-gold text-white px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-brand-dark hover:shadow-glow transition-all duration-300 transform hover:-translate-y-1">
+        Request a Quote
+      </a>
+    </div>
+  </div>
+  
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-white opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6 md:px-12 text-center">
+    <span class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2 block">Who We Are</span>
+    <h3 class="font-display text-3xl md:text-4xl font-bold text-slate-900 mb-8">Building Smart Infrastructure</h3>
+    <div class="w-16 h-1 bg-brand-gold mx-auto mb-8"></div>
+    <p class="text-slate-600 text-lg leading-loose max-w-3xl mx-auto">
+      Busy Hands specializes in innovative construction and utility solutions. We combine advanced technology like <strong class="text-slate-900">GPR scanning</strong> and <strong class="text-slate-900">directional drilling</strong> with traditional craftsmanship. Our dedicated team ensures precision, reliability, and lasting quality in every project we undertake.
+    </p>
+  </div>
+</section>
+
+<section class="py-20 bg-slate-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h3 class="font-display text-3xl md:text-4xl font-bold text-slate-900">Our Expertise</h3>
+      <p class="text-slate-500 mt-4 max-w-2xl mx-auto">Comprehensive solutions tailored for modern construction needs.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+        <div class="mb-4">
+            <svg class="w-10 h-10 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+        </div>
+        <h4 class="font-display text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-gold transition-colors">GPR Scanning</h4>
+        <p class="text-slate-600 leading-relaxed text-sm">Non-destructive underground imaging that ensures accuracy and safety by locating utilities before you dig.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+        <div class="mb-4">
+             <svg class="w-10 h-10 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </div>
+        <h4 class="font-display text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-gold transition-colors">Directional Drilling</h4>
+        <p class="text-slate-600 leading-relaxed text-sm">Advanced trenchless technology delivering efficient, low-impact drilling solutions for urban environments.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+        <div class="mb-4">
+             <svg class="w-10 h-10 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+        </div>
+        <h4 class="font-display text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-gold transition-colors">Smart Metering</h4>
+        <p class="text-slate-600 leading-relaxed text-sm">Future-ready installation services built on innovation, ensuring sustainable and precise energy tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-brand-dark text-slate-400 py-10 border-t border-slate-800">
+  <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+    <div class="mb-4 md:mb-0">
+      <span class="font-display font-bold text-white text-lg tracking-wider">BUSY HANDS</span>
+      <p class="text-sm mt-1">Precision. Reliability. Excellence.</p>
+    </div>
+    <div class="text-sm">
+      &copy; 2025 Busy Hands. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Logic
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const header = document.getElementById('main-header');
+  const navLinks = mobileMenu.querySelectorAll('a');
+  let isMenuOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    if (isMenuOpen) {
+      mobileMenu.classList.remove('scale-y-0');
+    } else {
+      mobileMenu.classList.add('scale-y-0');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      isMenuOpen = false;
+      mobileMenu.classList.add('scale-y-0');
+    });
+  });
+
+  // Scroll Effect for Header (Only handles shrinking now, not visibility)
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('shrink');
+    } else {
+      header.classList.remove('shrink');
+    }
+  });
+</script>
+
+</body>
+</html>
