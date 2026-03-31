@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Busy Hands | Our Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Orbitron', 'sans-serif'] },
+          colors: { brand: { dark: '#0a0a0a', accent: '#d97706', subtle: '#f9fafb' } }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #ffffff; color: #171717; }
+    .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.05); transition: all 0.4s ease; }
+    .glass-nav.scrolled { padding-top: 0.75rem; padding-bottom: 0.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .nav-link { position: relative; color: #171717; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; transition: color 0.3s ease; }
+    .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #d97706; transition: width 0.3s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .service-card { border: 1px solid #f3f4f6; transition: all 0.5s ease; background: #fff; }
+    .service-card:hover { border-color: #0a0a0a; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); transform: translateY(-5px); }
+    .service-img-wrapper { overflow: hidden; height: 240px; }
+    .service-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+    .service-card:hover .service-img { transform: scale(1.05); }
+    .icon-box { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; background: #f9fafb; color: #d97706; margin-bottom: 1rem; transition: background 0.3s ease, color 0.3s ease; }
+    .service-card:hover .icon-box { background: #0a0a0a; color: #fff; }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen pt-24">
+
+  <header id="navbar" class="fixed w-full top-0 z-50 py-5 glass-nav">
+    <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-4 group">
+        <img src="images/BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="h-10 w-auto object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
+        <span class="font-display font-bold text-2xl tracking-widest text-brand-dark uppercase">Busy Hands</span>
+      </a>
+      <nav class="hidden md:flex space-x-10 items-center">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-50 p-2">
+        <span class="w-6 h-0.5 bg-brand-dark block"></span>
+        <span class="w-6 h-0.5 bg-brand-dark block"></span>
+        <span class="w-6 h-0.5 bg-brand-dark block"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow bg-brand-subtle pb-24">
+    <section class="container mx-auto px-6 lg:px-12 pt-12">
+      <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+        <h1 class="font-display text-4xl md:text-6xl font-black text-brand-dark mb-6 tracking-tight">EXPERTISE</h1>
+        <div class="w-16 h-1 bg-brand-accent mx-auto mb-6"></div>
+        <p class="text-gray-500 text-lg font-light leading-relaxed">
+          Comprehensive, industry-leading solutions executed with uncompromising precision and technical mastery.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-img-wrapper">
+            <img src="images/horizontal directional drilling 1.jpeg" alt="Horizontal Directional Drilling" class="service-img">
+          </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Horizontal Directional Drilling</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">Advanced trenchless methodology for installing underground utilities with minimal environmental impact and surface disruption.</p>
+          </div>
+        </div>
+
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-img-wrapper">
+            <img src="images/drilling and blasting.jpeg" alt="Drilling and Blasting" class="service-img">
+          </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Drilling & Blasting</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">Precision rock fragmentation for mining and heavy civil engineering projects, executed under strict safety protocols.</p>
+          </div>
+        </div>
+
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-img-wrapper">
+            <img src="images/Civil works.jpeg" alt="Civil Works" class="service-img">
+          </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Civil Works</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">Comprehensive civil engineering solutions, encompassing earthworks, foundational structures, and massive infrastructure development.</p>
+          </div>
+        </div>
+
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-img-wrapper">
+            <img src="images/SMARTMETER.jpg" alt="Smart Meter" class="service-img">
+          </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Smart Metering</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">Next-generation installation of intelligent metering systems, driving energy efficiency and accurate data monitoring.</p>
+          </div>
+        </div>
+
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="500">
+           <div class="service-img-wrapper bg-gray-200">
+              <img src="images/HOMEPAGE.jpg" alt="Buildings and Construction" class="service-img">
+           </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Buildings & Construction</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">End-to-end commercial and industrial construction services, delivering architecturally sound and functional facilities.</p>
+          </div>
+        </div>
+
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="600">
+           <div class="service-img-wrapper bg-gray-200 flex items-center justify-center relative overflow-hidden">
+               <div class="absolute inset-0 bg-brand-dark opacity-10"></div>
+               <img src="images/ABOUT1.jpg" alt="Butt Welding" class="service-img">
+           </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Butt Welding</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">High-integrity thermal fusion techniques for industrial pipelines, guaranteeing leak-proof and durable infrastructure links.</p>
+          </div>
+        </div>
+
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="700">
+           <div class="service-img-wrapper bg-gray-200">
+               <img src="images/Mining services.jpeg" alt="Mining" class="service-img" style="object-position: bottom;">
+           </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Mining Services</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">Specialized support operations for the mining sector, optimizing extraction processes and site development.</p>
+          </div>
+        </div>
+
+        <div class="service-card rounded-sm" data-aos="fade-up" data-aos-delay="800">
+           <div class="service-img-wrapper bg-gray-200">
+               <img src="images/Supplier .jpeg" alt="Supplier" class="service-img">
+           </div>
+          <div class="p-8">
+            <div class="icon-box rounded-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-dark mb-3">Supplier</h3>
+            <p class="text-gray-500 text-sm font-light leading-relaxed">Reliable procurement and supply chain management of high-grade construction materials and heavy equipment.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-brand-dark py-12 border-t border-gray-900">
+    <div class="container mx-auto px-6 text-center">
+      <span class="font-display font-bold text-white text-xl tracking-widest uppercase block mb-2">Busy Hands</span>
+      <div class="text-gray-500 text-sm font-light tracking-wide">
+        &copy; 2026 Busy Hands. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, offset: 50, duration: 800, easing: 'ease-out-cubic' });
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  </script>
+</body>
+</html>
