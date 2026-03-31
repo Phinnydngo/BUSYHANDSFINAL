@@ -1,515 +1,279 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 <title>Busy Hands | Featured Projects</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
-
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <script>
-
 tailwind.config = {
-
-theme: {
-
-extend: {
-
-fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Orbitron', 'sans-serif'] },
-
-colors: { brand: { dark: '#0a0a0a', accent: '#d97706', subtle: '#f9fafb' } }
-
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Orbitron', 'sans-serif'] },
+      colors: { brand: { dark: '#0a0a0a', accent: '#d97706', subtle: '#f9fafb' } }
+    }
+  }
 }
-
-}
-
-}
-
 </script>
-
 <style>
+/* Added to prevent horizontal scrolling on mobile caused by animations */
+html, body { overflow-x: hidden; width: 100%; }
 
-body { background-color: #ffffff; color: #171717; }
-
+body { background-color: #ffffff; color: #171717; -webkit-font-smoothing: antialiased; }
 .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.05); transition: all 0.4s ease; }
-
 .glass-nav.scrolled { padding-top: 0.75rem; padding-bottom: 0.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
 .nav-link { position: relative; color: #171717; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; transition: color 0.3s ease; }
-
 .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #d97706; transition: width 0.3s ease; }
-
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
 .project-card { border: 1px solid #f3f4f6; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); background: #fff; position: relative; overflow: hidden; }
-
 .project-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -15px rgba(0,0,0,0.1); border-color: #0a0a0a; }
 
-.project-img-container { height: 320px; overflow: hidden; position: relative; background: #e5e7eb; }
+/* Adjusted image container height for mobile devices */
+.project-img-container { height: 250px; overflow: hidden; position: relative; background: #e5e7eb; }
+@media (min-width: 768px) { .project-img-container { height: 320px; } }
 
 .project-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); transition: transform 0.8s ease, filter 0.8s ease; }
-
 .project-card:hover .project-img { transform: scale(1.08); filter: grayscale(0%); }
-
 .project-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%); opacity: 0.85; transition: opacity 0.5s ease; }
-
 .project-card:hover .project-overlay { opacity: 0.95; }
 
-.project-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; transform: translateY(20px); transition: transform 0.5s ease; }
-
-.project-card:hover .project-content { transform: translateY(0); }
+/* Adjusted inner padding for mobile vs desktop */
+.project-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; transform: translateY(20px); transition: transform 0.5s ease; }
+@media (min-width: 768px) { .project-content { padding: 2rem; } }
 
 .project-desc { opacity: 0; height: 0; transition: opacity 0.4s ease 0.1s, height 0.4s ease; overflow: hidden; }
-
 .project-card:hover .project-desc { opacity: 1; height: auto; margin-top: 1rem; }
-
 </style>
-
 </head>
+<body class="flex flex-col min-h-screen pt-20 md:pt-24">
 
-<body class="flex flex-col min-h-screen pt-24">
+<header id="navbar" class="fixed w-full top-0 z-50 py-4 md:py-5 glass-nav">
+  <div class="container mx-auto px-4 md:px-6 lg:px-12 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-3 md:gap-4 group">
+      <img src="images/BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="h-8 md:h-10 w-auto object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
+      <span class="font-display font-bold text-xl md:text-2xl tracking-widest text-brand-dark uppercase">Busy Hands</span>
+    </a>
+    <nav class="hidden md:flex space-x-10 items-center">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="projects.html" class="nav-link active">Projects</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-50 p-2">
+      <span class="w-6 h-0.5 bg-brand-dark block transition-all"></span>
+      <span class="w-6 h-0.5 bg-brand-dark block transition-all"></span>
+      <span class="w-6 h-0.5 bg-brand-dark block transition-all"></span>
+    </button>
+  </div>
 
-
-
-<header id="navbar" class="fixed w-full top-0 z-50 py-5 glass-nav">
-
-<div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
-
-<a href="index.html" class="flex items-center gap-4 group">
-
-<img src="images/BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="h-10 w-auto object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
-
-<span class="font-display font-bold text-2xl tracking-widest text-brand-dark uppercase">Busy Hands</span>
-
-</a>
-
-<nav class="hidden md:flex space-x-10 items-center">
-
-<a href="index.html" class="nav-link">Home</a>
-
-<a href="about.html" class="nav-link">About</a>
-
-<a href="services.html" class="nav-link">Services</a>
-
-<a href="projects.html" class="nav-link active">Projects</a>
-
-<a href="contact.html" class="nav-link">Contact</a>
-
-</nav>
-
-<button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-50 p-2">
-
-<span class="w-6 h-0.5 bg-brand-dark block"></span>
-
-<span class="w-6 h-0.5 bg-brand-dark block"></span>
-
-<span class="w-6 h-0.5 bg-brand-dark block"></span>
-
-</button>
-
-</div>
-
+  <div id="mobile-menu" class="absolute top-full left-0 w-full bg-white shadow-xl transform origin-top scale-y-0 opacity-0 transition-all duration-400 md:hidden flex flex-col space-y-4 py-8 px-6 text-center border-t border-gray-100">
+    <a href="index.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">Home</a>
+    <a href="about.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">About</a>
+    <a href="services.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">Services</a>
+    <a href="projects.html" class="text-brand-accent font-medium tracking-widest uppercase text-sm">Projects</a>
+    <a href="contact.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">Contact</a>
+  </div>
 </header>
 
-
-
 <main class="flex-grow">
-
-<section class="container mx-auto px-6 lg:px-12 pt-12 pb-8 text-center">
-
-<div data-aos="fade-up">
-
-<h1 class="font-display text-4xl md:text-6xl font-black text-brand-dark mb-6 tracking-tight">PORTFOLIO</h1>
-
-<div class="w-16 h-1 bg-brand-accent mx-auto mb-6"></div>
-
-<p class="max-w-3xl mx-auto text-gray-500 text-lg font-light leading-relaxed">
-
-A showcase of engineering excellence. Explore our milestone projects that demonstrate our capacity for complex problem-solving and execution across diverse sectors.
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<section class="bg-brand-dark py-12 mb-16" data-aos="fade-up" data-aos-delay="100" id="stats-section">
-
-<div class="container mx-auto px-6 lg:px-12">
-
-<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-800">
-
-<div class="p-4">
-
-<div class="font-display text-4xl lg:text-5xl font-bold text-white mb-2">
-
-<span class="counter" data-target="50">0</span>+
-
-</div>
-
-<div class="text-xs uppercase tracking-widest text-gray-400 font-medium">Major Contracts</div>
-
-</div>
-
-<div class="p-4">
-
-<div class="font-display text-4xl lg:text-5xl font-bold text-white mb-2">
-
-<span class="counter" data-target="99">0</span>%
-
-</div>
-
-<div class="text-xs uppercase tracking-widest text-gray-400 font-medium">Safety Record</div>
-
-</div>
-
-<div class="p-4">
-
-<div class="font-display text-4xl lg:text-5xl font-bold text-brand-accent mb-2">
-
-<span class="counter" data-target="10">0</span>+
-
-</div>
-
-<div class="text-xs uppercase tracking-widest text-gray-400 font-medium">Years Active</div>
-
-</div>
-
-<div class="p-4">
-
-<div class="font-display text-4xl lg:text-5xl font-bold text-white mb-2">
-
-<span class="counter" data-target="100">0</span>%
-
-</div>
-
-<div class="text-xs uppercase tracking-widest text-gray-400 font-medium">Client Satisfaction</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<section class="container mx-auto px-6 lg:px-12 pb-24">
-
-<div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-
-
-<div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="100">
-
-<div class="project-img-container">
-
-<img src="images/URBANPIPELINE.jpg" alt="Urban Pipeline Installation" class="project-img" />
-
-<div class="project-overlay"></div>
-
-<div class="project-content">
-
-<div class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-2">Civil Infrastructure</div>
-
-<h3 class="font-display text-2xl font-bold text-white">Urban Pipeline Networks</h3>
-
-<p class="project-desc text-gray-300 text-sm font-light leading-relaxed">
-
-Design and deployment of highly efficient underground pipeline systems intended for sustainable, high-volume water distribution across complex urban topologies.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="200">
-
-<div class="project-img-container">
-
-<img src="images/horizontal directional drilling 2.jpeg" alt="Trenchless Utilities" class="project-img" />
-
-<div class="project-overlay"></div>
-
-<div class="project-content">
-
-<div class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-2">Excavation Tech</div>
-
-<h3 class="font-display text-2xl font-bold text-white">Trenchless Utility Routing</h3>
-
-<p class="project-desc text-gray-300 text-sm font-light leading-relaxed">
-
-Implementation of precision horizontal directional drilling beneath existing city frameworks to install critical telecommunication and power lines without surface disruption.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="300">
-
-<div class="project-img-container">
-
-<img src="images/SMARTMETER.jpg" alt="Smart Meter Upgrade" class="project-img" />
-
-<div class="project-overlay"></div>
-
-<div class="project-content">
-
-<div class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-2">Energy Tech</div>
-
-<h3 class="font-display text-2xl font-bold text-white">Smart Meter Integration</h3>
-
-<p class="project-desc text-gray-300 text-sm font-light leading-relaxed">
-
-City-wide installation of advanced smart metering hardware, empowering municipalities with real-time data analytics and automated energy management capabilities.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="400">
-
-<div class="project-img-container">
-
-<img src="images/Precision rock blasting .jpeg" alt="Precision Rock Blasting" class="project-img" />
-
-<div class="project-overlay"></div>
-
-<div class="project-content">
-
-<div class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-2">Mining & Excavation</div>
-
-<h3 class="font-display text-2xl font-bold text-white">Precision Rock Blasting</h3>
-
-<p class="project-desc text-gray-300 text-sm font-light leading-relaxed">
-
-Controlled drilling and blasting operations for large-scale mining and heavy civil excavation projects, adhering to stringent safety protocols and geological parameters.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="500">
-
-<div class="project-img-container">
-
-<img src="images/esp erection and maintanance.jpeg" alt="Industrial Plant Erection" class="project-img" />
-
-<div class="project-overlay"></div>
-
-<div class="project-content">
-
-<div class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-2">Heavy Construction</div>
-
-<h3 class="font-display text-2xl font-bold text-white">Industrial Plant Erection</h3>
-
-<p class="project-desc text-gray-300 text-sm font-light leading-relaxed">
-
-Comprehensive structural erection, scaffolding, and maintenance services for massive industrial facilities, processing plants, and critical infrastructure.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="600">
-
-<div class="project-img-container">
-
-<img src="images/High pressure fusion.jpeg" alt="High-Pressure Pipeline Fusion" class="project-img" />
-
-<div class="project-overlay"></div>
-
-<div class="project-content">
-
-<div class="text-brand-accent text-xs font-bold uppercase tracking-widest mb-2">Pipeline Integration</div>
-
-<h3 class="font-display text-2xl font-bold text-white">High-Pressure Fusion</h3>
-
-<p class="project-desc text-gray-300 text-sm font-light leading-relaxed">
-
-Specialized butt welding services for high-density polyethylene (HDPE) pipes, ensuring seamless, leak-proof integration for municipal water and sanitation systems.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-</div>
-
-</section>
-
+  <section class="container mx-auto px-4 md:px-6 lg:px-12 pt-8 md:pt-12 pb-8 text-center">
+    <div data-aos="fade-up">
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-brand-dark mb-4 md:mb-6 tracking-tight">PORTFOLIO</h1>
+      <div class="w-16 h-1 bg-brand-accent mx-auto mb-6"></div>
+      <p class="max-w-3xl mx-auto text-gray-500 text-base md:text-lg font-light leading-relaxed px-2 md:px-0">
+        A showcase of engineering excellence. Explore our milestone projects that demonstrate our capacity for complex problem-solving and execution across diverse sectors.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-brand-dark py-10 md:py-12 mb-12 md:mb-16" data-aos="fade-up" data-aos-delay="100" id="stats-section">
+    <div class="container mx-auto px-4 md:px-6 lg:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center divide-x divide-gray-800">
+        <div class="p-2 md:p-4">
+          <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-1 md:mb-2">
+            <span class="counter" data-target="50">0</span>+
+          </div>
+          <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-400 font-medium">Major Contracts</div>
+        </div>
+        <div class="p-2 md:p-4">
+          <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-1 md:mb-2">
+            <span class="counter" data-target="99">0</span>%
+          </div>
+          <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-400 font-medium">Safety Record</div>
+        </div>
+        <div class="p-2 md:p-4">
+          <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-accent mb-1 md:mb-2">
+            <span class="counter" data-target="10">0</span>+
+          </div>
+          <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-400 font-medium">Years Active</div>
+        </div>
+        <div class="p-2 md:p-4">
+          <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-1 md:mb-2">
+            <span class="counter" data-target="100">0</span>%
+          </div>
+          <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-400 font-medium">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto px-4 md:px-6 lg:px-12 pb-16 md:pb-24">
+    <div class="grid gap-6 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
+
+      <div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-img-container">
+          <img src="images/URBANPIPELINE.jpg" alt="Urban Pipeline Installation" class="project-img" />
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2">Civil Infrastructure</div>
+            <h3 class="font-display text-xl md:text-2xl font-bold text-white">Urban Pipeline Networks</h3>
+            <p class="project-desc text-gray-300 text-xs md:text-sm font-light leading-relaxed">
+              Design and deployment of highly efficient underground pipeline systems intended for sustainable, high-volume water distribution across complex urban topologies.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-img-container">
+          <img src="images/horizontal directional drilling 2.jpeg" alt="Trenchless Utilities" class="project-img" />
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2">Excavation Tech</div>
+            <h3 class="font-display text-xl md:text-2xl font-bold text-white">Trenchless Utility Routing</h3>
+            <p class="project-desc text-gray-300 text-xs md:text-sm font-light leading-relaxed">
+              Implementation of precision horizontal directional drilling beneath existing city frameworks to install critical telecommunication and power lines without surface disruption.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="300">
+        <div class="project-img-container">
+          <img src="images/SMARTMETER.jpg" alt="Smart Meter Upgrade" class="project-img" />
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2">Energy Tech</div>
+            <h3 class="font-display text-xl md:text-2xl font-bold text-white">Smart Meter Integration</h3>
+            <p class="project-desc text-gray-300 text-xs md:text-sm font-light leading-relaxed">
+              City-wide installation of advanced smart metering hardware, empowering municipalities with real-time data analytics and automated energy management capabilities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="400">
+        <div class="project-img-container">
+          <img src="images/Precision rock blasting .jpeg" alt="Precision Rock Blasting" class="project-img" />
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2">Mining & Excavation</div>
+            <h3 class="font-display text-xl md:text-2xl font-bold text-white">Precision Rock Blasting</h3>
+            <p class="project-desc text-gray-300 text-xs md:text-sm font-light leading-relaxed">
+              Controlled drilling and blasting operations for large-scale mining and heavy civil excavation projects, adhering to stringent safety protocols and geological parameters.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="500">
+        <div class="project-img-container">
+          <img src="images/esp erection and maintanance.jpeg" alt="Industrial Plant Erection" class="project-img" />
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2">Heavy Construction</div>
+            <h3 class="font-display text-xl md:text-2xl font-bold text-white">Industrial Plant Erection</h3>
+            <p class="project-desc text-gray-300 text-xs md:text-sm font-light leading-relaxed">
+              Comprehensive structural erection, scaffolding, and maintenance services for massive industrial facilities, processing plants, and critical infrastructure.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card rounded-sm" data-aos="fade-up" data-aos-delay="600">
+        <div class="project-img-container">
+          <img src="images/High pressure fusion.jpeg" alt="High-Pressure Pipeline Fusion" class="project-img" />
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2">Pipeline Integration</div>
+            <h3 class="font-display text-xl md:text-2xl font-bold text-white">High-Pressure Fusion</h3>
+            <p class="project-desc text-gray-300 text-xs md:text-sm font-light leading-relaxed">
+              Specialized butt welding services for high-density polyethylene (HDPE) pipes, ensuring seamless, leak-proof integration for municipal water and sanitation systems.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </main>
 
-
-
-<footer class="bg-brand-dark py-12 border-t border-gray-900">
-
-<div class="container mx-auto px-6 text-center">
-
-<span class="font-display font-bold text-white text-xl tracking-widest uppercase block mb-2">Busy Hands</span>
-
-<div class="text-gray-500 text-sm font-light tracking-wide">
-
-© 2026 Busy Hands. All rights reserved.
-
-</div>
-
-</div>
-
+<footer class="bg-brand-dark py-10 md:py-12 border-t border-gray-900">
+  <div class="container mx-auto px-4 md:px-6 text-center">
+    <span class="font-display font-bold text-white text-lg md:text-xl tracking-widest uppercase block mb-1 md:mb-2">Busy Hands</span>
+    <div class="text-gray-500 text-xs md:text-sm font-light tracking-wide">
+      © 2026 Busy Hands. All rights reserved.
+    </div>
+  </div>
 </footer>
 
-
-
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
 <script>
-
 // Initialize Scroll Animations
-
 AOS.init({ once: true, offset: 50, duration: 800, easing: 'ease-out-cubic' });
 
-
 // Navbar Scroll Effect
-
 const nav = document.getElementById('navbar');
-
 window.addEventListener('scroll', () => {
-
-if (window.scrollY > 50) nav.classList.add('scrolled');
-
-else nav.classList.remove('scrolled');
-
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
 });
-
-
 
 // Mobile Menu Toggle
-
 document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-
-const menu = document.getElementById('mobile-menu');
-
-menu.classList.toggle('scale-y-0');
-
-menu.classList.toggle('opacity-0');
-
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('scale-y-0');
+  menu.classList.toggle('opacity-0');
 });
-
-
 
 // Number Counter Animation Logic
-
 const counters = document.querySelectorAll('.counter');
-
-const speed = 100; // The lower the slower
-
-
+const speed = 100;
 
 const startCounting = (counter) => {
+  const updateCount = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const inc = target / speed;
 
-const updateCount = () => {
-
-const target = +counter.getAttribute('data-target');
-
-const count = +counter.innerText;
-
-const inc = target / speed;
-
-
-
-if (count < target) {
-
-counter.innerText = Math.ceil(count + inc);
-
-setTimeout(updateCount, 25);
-
-} else {
-
-counter.innerText = target;
-
-}
-
+    if (count < target) {
+      counter.innerText = Math.ceil(count + inc);
+      setTimeout(updateCount, 25);
+    } else {
+      counter.innerText = target;
+    }
+  };
+  updateCount();
 };
 
-updateCount();
-
-};
-
-
-
-// Intersection Observer to trigger counting when stats are in view
-
+// Intersection Observer
 const statsSection = document.getElementById('stats-section');
-
 const observer = new IntersectionObserver((entries, observer) => {
-
-entries.forEach(entry => {
-
-if (entry.isIntersecting) {
-
-counters.forEach(counter => startCounting(counter));
-
-observer.unobserve(entry.target); // Run once
-
-}
-
-});
-
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      counters.forEach(counter => startCounting(counter));
+      observer.unobserve(entry.target);
+    }
+  });
 }, { threshold: 0.5 });
 
-
-
 if (statsSection) {
-
-observer.observe(statsSection);
-
+  observer.observe(statsSection);
 }
-
 </script>
-
 </body>
-
 </html>

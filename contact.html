@@ -1,275 +1,163 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Busy Hands | Contact Us</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <script>
-
     tailwind.config = {
-
       theme: {
-
         extend: {
-
           fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Orbitron', 'sans-serif'] },
-
           colors: { brand: { dark: '#0a0a0a', accent: '#d97706', subtle: '#f9fafb' } }
-
         }
-
       }
-
     }
-
   </script>
-
   <style>
+    /* Prevent mobile side-scrolling */
+    html, body { overflow-x: hidden; width: 100%; }
 
-    body { background-color: #ffffff; color: #171717; }
-
+    body { background-color: #ffffff; color: #171717; -webkit-font-smoothing: antialiased; }
+    
     .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.05); transition: all 0.4s ease; }
-
     .glass-nav.scrolled { padding-top: 0.75rem; padding-bottom: 0.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
+    
     .nav-link { position: relative; color: #171717; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; transition: color 0.3s ease; }
-
     .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #d97706; transition: width 0.3s ease; }
-
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-
-    .info-card { background: #fff; border: 1px solid #f3f4f6; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05); }
-
-    .input-field { width: 100%; border-bottom: 1px solid #e5e7eb; background: transparent; padding: 1rem 0; font-size: 0.875rem; transition: border-color 0.3s ease; outline: none; }
-
-    .input-field:focus { border-bottom-color: #0a0a0a; }
-
-    .btn-submit { background: #0a0a0a; color: #fff; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; font-size: 0.875rem; padding: 1rem 2.5rem; transition: all 0.4s ease; width: 100%; border: 1px solid #0a0a0a; }
-
-    .btn-submit:hover { background: transparent; color: #0a0a0a; }
-
-    .map-frame { filter: grayscale(100%) contrast(1.2); transition: filter 0.5s ease; width: 100%; height: 100%; min-height: 500px; }
-
+    
+    .info-card { background: #fff; border: 1px solid #f3f4f6; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05); height: 100%; }
+    
+    /* Responsive map height */
+    .map-frame { filter: grayscale(100%) contrast(1.2); transition: filter 0.5s ease; width: 100%; height: 100%; min-height: 350px; }
+    @media (min-width: 768px) { .map-frame { min-height: 500px; } }
     .map-container:hover .map-frame { filter: grayscale(20%); }
-
   </style>
-
 </head>
+<body class="flex flex-col min-h-screen pt-20 md:pt-24">
 
-<body class="flex flex-col min-h-screen pt-24">
-
-
-
-  <header id="navbar" class="fixed w-full top-0 z-50 py-5 glass-nav">
-
-    <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
-
-      <a href="index.html" class="flex items-center gap-4 group">
-
-        <img src="images/BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="h-10 w-auto object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
-
-        <span class="font-display font-bold text-2xl tracking-widest text-brand-dark uppercase">Busy Hands</span>
-
+  <header id="navbar" class="fixed w-full top-0 z-50 py-4 md:py-5 glass-nav">
+    <div class="container mx-auto px-4 md:px-6 lg:px-12 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3 md:gap-4 group">
+        <img src="images/BUSYHANDSLOGO.jpg" alt="Busy Hands Logo" class="h-8 md:h-10 w-auto object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
+        <span class="font-display font-bold text-xl md:text-2xl tracking-widest text-brand-dark uppercase">Busy Hands</span>
       </a>
-
       <nav class="hidden md:flex space-x-10 items-center">
-
         <a href="index.html" class="nav-link">Home</a>
-
         <a href="about.html" class="nav-link">About</a>
-
         <a href="services.html" class="nav-link">Services</a>
-
         <a href="projects.html" class="nav-link">Projects</a>
-
         <a href="contact.html" class="nav-link active">Contact</a>
-
       </nav>
-
       <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-50 p-2">
-
-        <span class="w-6 h-0.5 bg-brand-dark block"></span>
-
-        <span class="w-6 h-0.5 bg-brand-dark block"></span>
-
-        <span class="w-6 h-0.5 bg-brand-dark block"></span>
-
+        <span class="w-6 h-0.5 bg-brand-dark block transition-all"></span>
+        <span class="w-6 h-0.5 bg-brand-dark block transition-all"></span>
+        <span class="w-6 h-0.5 bg-brand-dark block transition-all"></span>
       </button>
-
     </div>
 
+    <div id="mobile-menu" class="absolute top-full left-0 w-full bg-white shadow-xl transform origin-top scale-y-0 opacity-0 transition-all duration-400 md:hidden flex flex-col space-y-4 py-8 px-6 text-center border-t border-gray-100">
+      <a href="index.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">Home</a>
+      <a href="about.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">About</a>
+      <a href="services.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">Services</a>
+      <a href="projects.html" class="text-brand-dark font-medium tracking-widest uppercase text-sm">Projects</a>
+      <a href="contact.html" class="text-brand-accent font-medium tracking-widest uppercase text-sm">Contact</a>
+    </div>
   </header>
 
-
-
-  <main class="flex-grow container mx-auto px-6 lg:px-12 pt-12 pb-24">
-
-    <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-
-      <h1 class="font-display text-4xl md:text-6xl font-black text-brand-dark mb-6 tracking-tight">CONNECT</h1>
-
-      <div class="w-16 h-1 bg-brand-accent mx-auto mb-6"></div>
-
-      <p class="text-gray-500 text-lg font-light leading-relaxed">
-
+  <main class="flex-grow container mx-auto px-4 md:px-6 lg:px-12 pt-8 md:pt-12 pb-16 md:pb-24">
+    
+    <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20" data-aos="fade-up">
+      <h1 class="font-display text-4xl md:text-6xl font-black text-brand-dark mb-4 md:mb-6 tracking-tight uppercase">CONNECT</h1>
+      <div class="w-16 h-1 bg-brand-accent mx-auto mb-4 md:mb-6"></div>
+      <p class="text-gray-500 text-base md:text-lg font-light leading-relaxed px-2">
         Initiate a dialogue with our engineering and planning teams. We are based in Gaborone and prepared to execute on a national scale.
-
       </p>
-
     </div>
 
-
-
-    <div class="flex flex-col lg:flex-row gap-12 items-stretch">
-
-     
-
-      <div class="w-full lg:w-5/12 info-card p-10 lg:p-12 rounded-sm" data-aos="fade-right" data-aos-delay="100">
-
-        <h2 class="font-display text-2xl font-bold text-brand-dark mb-10 uppercase tracking-wide">Direct Lines</h2>
-
-       
-
-        <div class="space-y-10">
-
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+      
+      <div class="w-full lg:w-5/12 info-card p-8 md:p-10 lg:p-12 rounded-sm" data-aos="fade-right" data-aos-delay="100">
+        <h2 class="font-display text-xl md:text-2xl font-bold text-brand-dark mb-8 md:mb-10 uppercase tracking-wide">Direct Lines</h2>
+        
+        <div class="space-y-8 md:space-y-10">
           <div class="flex items-start">
-
-            <div class="mt-1 text-brand-accent">
-
+            <div class="mt-1 text-brand-accent flex-shrink-0">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-
             </div>
-
             <div class="ml-6">
-
-              <span class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Headquarters</span>
-
-              <span class="block text-lg text-brand-dark font-medium">Gaborone, Botswana</span>
-
+              <span class="block text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Headquarters</span>
+              <span class="block text-base md:text-lg text-brand-dark font-medium">Gaborone, Botswana</span>
             </div>
-
           </div>
 
-
-
           <div class="flex items-start">
-
-            <div class="mt-1 text-brand-accent">
-
+            <div class="mt-1 text-brand-accent flex-shrink-0">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-
             </div>
-
-            <div class="ml-6">
-
-              <span class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Electronic Mail</span>
-
-              <a href="mailto:busyhands12022@gmail.com" class="block text-lg text-brand-dark font-medium hover:text-brand-accent transition">busyhands12022@gmail.com</a>
-
+            <div class="ml-6 overflow-hidden">
+              <span class="block text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Electronic Mail</span>
+              <a href="mailto:busyhands12022@gmail.com" class="block text-base md:text-lg text-brand-dark font-medium hover:text-brand-accent transition break-all md:break-normal">busyhands12022@gmail.com</a>
             </div>
-
           </div>
-
-
 
           <div class="flex items-start">
-
-            <div class="mt-1 text-brand-accent">
-
+            <div class="mt-1 text-brand-accent flex-shrink-0">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-
             </div>
-
             <div class="ml-6">
-
-              <span class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Dispatch / Support</span>
-
-              <a href="tel:+26771240433" class="block text-lg text-brand-dark font-medium hover:text-brand-accent transition">+267 71240433</a>
-
-              <a href="tel:+26776409262" class="block text-lg text-brand-dark font-medium hover:text-brand-accent transition">+267 76409262</a>
-
+              <span class="block text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Dispatch / Support</span>
+              <div class="flex flex-col space-y-1">
+                <a href="tel:+26771240433" class="block text-base md:text-lg text-brand-dark font-medium hover:text-brand-accent transition">+267 71240433</a>
+                <a href="tel:+26776409262" class="block text-base md:text-lg text-brand-dark font-medium hover:text-brand-accent transition">+267 76409262</a>
+              </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-
 
       <div class="w-full lg:w-7/12 map-container bg-gray-100 rounded-sm overflow-hidden border border-gray-200" data-aos="fade-left" data-aos-delay="200">
-
-        <iframe
-
-          class="map-frame"
-
-          frameborder="0"
-
-          scrolling="no"
-
+        <iframe 
+          class="map-frame" 
+          frameborder="0" 
+          scrolling="no" 
           src="https://maps.google.com/maps?q=Gaborone,%20Botswana&t=&z=13&ie=UTF8&iwloc=&output=embed">
-
         </iframe>
-
       </div>
 
-
-
     </div>
-
   </main>
 
-
-
-  <footer class="bg-brand-dark py-12 border-t border-gray-900">
-
-    <div class="container mx-auto px-6 text-center">
-
-      <span class="font-display font-bold text-white text-xl tracking-widest uppercase block mb-2">Busy Hands</span>
-
-      <div class="text-gray-500 text-sm font-light tracking-wide">
-
-        &copy; 2026 Busy Hands. All rights reserved.
-
+  <footer class="bg-brand-dark py-10 md:py-12 border-t border-gray-900">
+    <div class="container mx-auto px-4 md:px-6 text-center">
+      <span class="font-display font-bold text-white text-lg md:text-xl tracking-widest uppercase block mb-1 md:mb-2">Busy Hands</span>
+      <div class="text-gray-500 text-xs md:text-sm font-light tracking-wide">
+        © 2026 Busy Hands. All rights reserved.
       </div>
-
     </div>
-
   </footer>
 
-
-
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
   <script>
-
     AOS.init({ once: true, offset: 50, duration: 800, easing: 'ease-out-cubic' });
-
+    
+    // Navbar Scroll Effect
     const nav = document.getElementById('navbar');
-
     window.addEventListener('scroll', () => {
-
       if (window.scrollY > 50) nav.classList.add('scrolled');
-
       else nav.classList.remove('scrolled');
-
     });
 
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('scale-y-0');
+      menu.classList.toggle('opacity-0');
+    });
   </script>
-
 </body>
-
 </html>
